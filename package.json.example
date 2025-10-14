@@ -1,0 +1,22 @@
+{
+  "name": "firefly-energy-platform",
+  "version": "1.0.0",
+  "description": "AI-powered distributor and sales intelligence platform for Firefly Energy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server/index.ts",
+    "build": "vite build",
+    "start": "NODE_ENV=production tsx server/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "firefly-energy",
+    "battery-distribution",
+    "sales-intelligence",
+    "ai-assistant",
+    "distributor-platform"
+  ],
+  "author": "Firefly Energy",
+  "license": "PROPRIETARY"
+}
