@@ -14,6 +14,9 @@ import Pricing from "@/pages/Pricing";
 import ROI from "@/pages/ROI";
 import Leads from "@/pages/Leads";
 import Settings from "@/pages/Settings";
+import Pipeline from "@/pages/Pipeline";
+import Resources from "@/pages/Resources";
+import Comparison from "@/pages/Comparison";
 import NotFound from "@/pages/not-found";
 import { Battery } from "lucide-react";
 
@@ -25,7 +28,10 @@ function Router() {
       <Route path="/product-finder" component={ProductFinderPage} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/roi" component={ROI} />
+      <Route path="/comparison" component={Comparison} />
+      <Route path="/pipeline" component={Pipeline} />
       <Route path="/leads" component={Leads} />
+      <Route path="/resources" component={Resources} />
       <Route path="/settings" component={Settings} />
       <Route component={NotFound} />
     </Switch>

@@ -1,6 +1,8 @@
 import { DashboardStats } from "@/components/DashboardStats";
 import { SalesChart } from "@/components/SalesChart";
 import { ChannelBreakdown } from "@/components/ChannelBreakdown";
+import { QuickActions } from "@/components/QuickActions";
+import { RecentActivity } from "@/components/RecentActivity";
 
 export default function Dashboard() {
   return (
@@ -12,10 +14,12 @@ export default function Dashboard() {
         </p>
       </div>
       <DashboardStats />
+      <QuickActions />
       <div className="grid gap-6 md:grid-cols-2">
         <SalesChart />
         <ChannelBreakdown />
       </div>
+      <RecentActivity />
     </div>
   );
 }

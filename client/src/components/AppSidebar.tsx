@@ -1,4 +1,4 @@
-import { Bot, Calculator, Home, MessageSquare, Search, Settings, TrendingUp } from "lucide-react";
+import { Bot, Calculator, Home, MessageSquare, Search, Settings, TrendingUp, GitBranch, FileText, BarChart3 } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -33,15 +33,36 @@ const mainItems = [
     url: "/pricing",
     icon: Calculator,
   },
+];
+
+const analyticsItems = [
   {
     title: "ROI Comparison",
     url: "/roi",
     icon: TrendingUp,
   },
   {
+    title: "Advanced Analysis",
+    url: "/comparison",
+    icon: BarChart3,
+  },
+  {
+    title: "Pipeline",
+    url: "/pipeline",
+    icon: GitBranch,
+  },
+  {
     title: "Lead Qualification",
     url: "/leads",
     icon: MessageSquare,
+  },
+];
+
+const resourceItems = [
+  {
+    title: "Resources",
+    url: "/resources",
+    icon: FileText,
   },
 ];
 
@@ -60,13 +81,49 @@ export function AppSidebar() {
     <Sidebar data-testid="sidebar-main">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Firefly Intelligence</SidebarGroupLabel>
+          <SidebarGroupLabel>Tools</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={location === item.url}>
-                    <Link href={item.url} data-testid={`link-${item.title.toLowerCase().replace(' ', '-')}`}>
+                    <Link href={item.url} data-testid={`link-${item.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        
+        <SidebarGroup>
+          <SidebarGroupLabel>Analytics</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {analyticsItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild isActive={location === item.url}>
+                    <Link href={item.url} data-testid={`link-${item.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>Library</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {resourceItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild isActive={location === item.url}>
+                    <Link href={item.url} data-testid={`link-${item.title.toLowerCase()}`}>
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </Link>
