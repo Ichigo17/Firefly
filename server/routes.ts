@@ -3,6 +3,8 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { chatWithAssistant, streamChatWithAssistant } from "./openai";
 import { insertLeadSchema, insertActivitySchema } from "@shared/schema";
+import { generatePricingQuoteCSV, generateLeadsCSV } from "./export";
+import { seedDatabase } from "./seed";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // AI Assistant Chat endpoint
@@ -121,6 +123,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error: any) {
       console.error("Get distributors error:", error);
       res.status(500).json({ error: "Failed to fetch distributors" });
+    }
+  });
+
+  // Export endpoints
+  app.get("/api/export/leads", async (req, res) => {
+    try {
+      const leads = await storage.getLeads();
+      const csv = generateLeadsCSV(leads);
+      
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', 'attachment; filename=firefly-leads.csv');
+      res.send(csv);
+    } catch (error: any) {
+      console.error("Export leads error:", error);
+      res.status(500).json({ error: "Failed to export leads" });
+    }
+  });
+
+  app.post("/api/export/quote", async (req, res) => {
+    try {
+      const { quantity, unitPrice, discount, totalPrice, companyName, contactName } = req.body;
+      const csv = generatePricingQuoteCSV({ quantity, unitPrice, discount, totalPrice, companyName, contactName });
+      
+      res.setHeader('Content-Type', 'text/csv');
+      res.setHeader('Content-Disposition', 'attachment; filename=firefly-quote.csv');
+      res.send(csv);
+    } catch (error: any) {
+      console.error("Export quote error:", error);
+      res.status(500).json({ error: "Failed to export quote" });
+    }
+  });
+
+  // Database seeding endpoint (for demo purposes)
+  app.post("/api/admin/seed", async (req, res) => {
+    try {
+      await seedDatabase();
+      res.json({ message: "Database seeded successfully" });
+    } catch (error: any) {
+      console.error("Seed database error:", error);
+      res.status(500).json({ error: "Failed to seed database" });
     }
   });
 

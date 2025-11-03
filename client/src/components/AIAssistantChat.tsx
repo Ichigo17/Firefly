@@ -16,7 +16,7 @@ export function AIAssistantChat() {
     {
       id: "1",
       role: "assistant",
-      content: "Hello! I'm your Firefly Energy AI assistant powered by advanced AI. I can help you with product specifications, pricing information, technical comparisons, distributor questions, and more. How can I assist you today?",
+      content: "Hello! I'm your Firefly Energy AI assistant with comprehensive product knowledge. I can help you with:\n\n• Battery specifications and performance metrics\n• Pricing calculations and volume discounts  \n• Technical comparisons (MCF vs AGM vs Lithium)\n• Application recommendations (Marine, RV, Solar, Trucking)\n• Distributor program details and territories\n\nWhat would you like to know?",
     },
   ]);
   const [input, setInput] = useState("");
