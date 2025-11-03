@@ -1,6 +1,23 @@
 # Firefly Energy - Distributor Intelligence Platform
 
+[![CI](https://github.com/your-username/firefly-energy/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/firefly-energy/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-20-green.svg)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18.3-61DAFB.svg)](https://reactjs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791.svg)](https://www.postgresql.org/)
+
 AI-powered distributor and sales intelligence platform for Firefly Energy's carbon foam battery technology. Manage multi-channel distribution and accelerate market penetration across Marine, RV, Trucking, and Solar markets.
+
+## ⚡ Key Features
+
+- 🤖 **AI-Powered Assistant** - Real-time chat with OpenAI GPT-5 trained on Firefly product data
+- 📊 **Smart Analytics** - Interactive dashboards with sales trends and channel breakdowns
+- 💰 **Dynamic Pricing** - Automated volume discounts and margin calculations
+- 🎯 **Lead Management** - Intelligent prospect tracking with PostgreSQL persistence
+- 🗺️ **Territory Mapping** - Visual distributor coverage and expansion planning
+- 📈 **ROI Comparisons** - Data-driven battery technology analysis
+- 🔄 **Real-time Updates** - Live activity feeds and pipeline status
 
 ## 🎯 Goal
 
@@ -28,14 +45,15 @@ Achieve 500+ battery placements monthly through intelligent lead qualification, 
 
 ## 🚀 Tech Stack
 
-- **Frontend**: React + TypeScript + Vite
-- **Backend**: Express.js
-- **Database**: In-memory storage (MemStorage)
-- **UI Components**: shadcn/ui + Radix UI + Tailwind CSS
-- **Charts**: Recharts
-- **AI**: OpenAI API integration
-- **Routing**: Wouter
-- **State Management**: TanStack Query
+- **Frontend**: React 18 + TypeScript 5.6 + Vite 5
+- **Backend**: Express.js + Node.js 20
+- **Database**: PostgreSQL (Neon Serverless) with Drizzle ORM
+- **UI Components**: shadcn/ui + Radix UI + Tailwind CSS 4
+- **Charts**: Recharts for data visualization
+- **AI**: OpenAI GPT-5 for intelligent chat assistant
+- **Routing**: Wouter (lightweight React router)
+- **State Management**: TanStack Query v5
+- **Deployment**: Replit (with CI/CD via GitHub Actions)
 
 ## 📋 Prerequisites
 
@@ -64,11 +82,13 @@ Create a `.env` file in the root directory:
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
 SESSION_SECRET=your_session_secret_here
+DATABASE_URL=your_postgresql_connection_string
 ```
 
 **Required Environment Variables:**
-- `OPENAI_API_KEY` - Your OpenAI API key for AI Assistant functionality
-- `SESSION_SECRET` - Secret key for session management
+- `OPENAI_API_KEY` - Your OpenAI API key for AI Assistant functionality (get from [platform.openai.com](https://platform.openai.com/api-keys))
+- `SESSION_SECRET` - Secret key for session management (use a random string)
+- `DATABASE_URL` - PostgreSQL connection string (auto-provisioned on Replit)
 
 ### 4. Run Development Server
 
@@ -114,9 +134,15 @@ The application will be available at `http://localhost:5000`
 - Recent activity feed
 
 ### AI Assistant (`/ai-assistant`)
-- OpenAI-powered chat interface
-- Product specifications and technical support
-- Pricing information and comparisons
+- **Real-time AI Chat** powered by OpenAI GPT-5
+- Comprehensive Firefly product knowledge from technical documentation
+- **Streaming responses** for natural conversation flow
+- Expert guidance on:
+  - Battery specifications and performance metrics
+  - Pricing calculations and volume discounts
+  - Technical comparisons (Firefly MCF vs VRLA AGM vs Lithium)
+  - Application-specific recommendations
+  - Distributor program details and incentives
 
 ### Product Finder (`/product-finder`)
 - Application-based battery recommendations
